@@ -31,7 +31,7 @@ function perlin(x) {
 	var amplitude = 1;
 	var maxVal = 0;
 	for (var l = 0; l < level; ++l, amplitude *= octave) {
-		let x1 = x * (l + 1);
+		let x1 = x * (2 ** l);
 		let xi = Math.floor(x1);
 		let xj = xi + 1;
 		let d0 = dotGridGradient(l, xi, x1);
@@ -45,7 +45,7 @@ function perlin(x) {
 
 function gerateRandGradient() {
 	for (var l = 0; l < level; ++l) {
-		let len = (l + 1) * range;
+		let len = (2 ** l) * range;
 		randGradients[l] = new Array(len);
 		for (var i = 0; i < len; ++i) {
 			randGradients[l][i] = 2 * (Math.random() > 0.5) - 1;
